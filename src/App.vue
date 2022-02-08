@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import TodosShell from "@/components/TodosShell.vue";
 </script>
 

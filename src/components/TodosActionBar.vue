@@ -1,7 +1,9 @@
 <template>
   <footer class="footer">
     <!-- This should be `0 items left` by default -->
-    <span class="todo-count"><strong>{{ activeCount }}</strong> item left</span>
+    <span class="todo-count"
+      ><strong>{{ activeCount }}</strong> item left</span
+    >
     <!-- Remove this if you don't implement routing -->
     <ul class="filters">
       <li>
@@ -22,16 +24,17 @@
 import type Todo from "@/model/todo";
 import { computed } from "vue";
 
-const { todos } = defineProps<{
+const props = defineProps<{
   todos: Todo[];
 }>();
 
 const activeCount = computed(() => {
-  return todos.reduce((count, todo) => todo.completed ? count : count + 1, 0);
+  const { todos } = props;
+  return todos.reduce((count, todo) => (todo.completed ? count : count + 1), 0);
 });
 
-const hasCompleted = computed(() =>
-  todos.some(t => t.completed)
-)
-
+const hasCompleted = computed(() => {
+  const { todos } = props;
+  return todos.some((t) => t.completed);
+});
 </script>

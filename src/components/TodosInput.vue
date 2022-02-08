@@ -1,6 +1,11 @@
 <template>
-  <input v-model.trim="title" @keyup.enter="handleEnter" class="new-todo" placeholder="What needs to be done?"
-         autofocus>
+  <input
+    v-model.trim="title"
+    @keyup.enter="handleEnter"
+    class="new-todo"
+    placeholder="What needs to be done?"
+    autofocus
+  />
 </template>
 <script lang="ts" setup>
 import { ref } from "vue";
@@ -12,7 +17,6 @@ const handleEnter = () => {
   if (title.value.length > 0) {
     emit("create", title.value);
   }
-  title.value = '';
-}
-
+  title.value = "";
+};
 </script>

@@ -4,12 +4,11 @@
       <h1>todos</h1>
       <TodosInput @create="handleCreate" />
     </header>
-    <TodosMain :todos="todos" @toggle="handleToggle"/>
+    <TodosMain :todos="todos" @toggle="handleToggle" />
     <TodosActionBar :todos="todos" />
   </section>
 </template>
 <script lang="ts" setup>
-
 import TodosInput from "@/components/TodosInput.vue";
 import TodosMain from "@/components/TodosMain.vue";
 import TodosActionBar from "@/components/TodosActionBar.vue";
@@ -26,7 +25,7 @@ const handleCreate = async (title: string) => {
 };
 const handleToggle = async (todo: Todo) => {
   const updated = await updateTodo(todo.id, { completed: !todo.completed });
-  const ix = todos.findIndex(t => t.id === todo.id);
+  const ix = todos.findIndex((t) => t.id === todo.id);
   todos[ix] = updated;
 };
 
@@ -34,5 +33,4 @@ onMounted(async () => {
   const data = await getAll();
   todos.push(...data);
 });
-
 </script>
